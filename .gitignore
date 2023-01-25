@@ -1,5 +1,6 @@
-*.exe
-*.exe~
+*.com
+*.class
 *.dll
+*.exe
+*.o
 *.so
-*.dylib
