@@ -17,6 +17,7 @@ int main(){
 
     fullname = firstName + " " + lastName;
 
+
     numStars = fullname.length();
     stars.assign(numStars, '*');
 
