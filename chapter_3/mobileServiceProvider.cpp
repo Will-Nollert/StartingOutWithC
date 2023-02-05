@@ -22,8 +22,7 @@ int main()
     string username, packageName, selectedMonth;
 
     // declare Int for Month and userInputDataUsage
-    int month;
-    int userDataUsage;
+    int month, dataRate, userDataUsage;
 
     // ask for user name and billing month
     // month should be int 1-12 if not errror
@@ -112,14 +111,23 @@ int main()
     else if (userProgramMenuSelection = 1)
     {
         packageName = "Package A";
+        packageNamePrice = PACKAGE_A;
+        dataRate = 10;
+
     }
     else if (userProgramMenuSelection = 2)
     {
-        packageName = "Package A";
+        packageName = "Package B";
+        packageNamePrice = PACKAGE_B;
+        dataRate = 5;
+
     }
     else if (userProgramMenuSelection = 3)
     {
-        packageName = "Package A";
+        packageName = "Package C";
+        packageNamePrice = PACKAGE_C;
+        dataRate = 0;
+
     }
     else if (userProgramMenuSelection = 4)
     {
@@ -132,15 +140,19 @@ int main()
     cin >> gigsUsed;
 
     // compute bill Total
+    extraDataCharge = gigsUsed * dataRate; 
+    billTotal = packageNamePrice + extraDataCharge; 
+
 
     // display Bill with Month of Bill, Name, Package code
     // chranges inlcidesd in the pacakge deal, addtional charges
     // use indeitifying labes or display in table
 
+    cout << endl; 
     cout << "Hello " << username << " Welcome to your Cell Bill Calculator "
          << "For the month of " << selectedMonth << endl;
     cout << "This Month you selected " << packageName << " and used " << gigsUsed << " gigs of data "
-         << "for a total bill of: $ " << billTotal << endl << endl;
+         << "for a total bill of: $" << billTotal << endl << endl;
     cout << "Bill BreakDown" << endl;
     cout << "--------------\n";
     cout << "Package Cost: " << setw(8) << packageNamePrice << endl;
