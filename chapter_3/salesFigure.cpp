@@ -30,6 +30,6 @@ int main()
     cout << "Day 3: " << setw(8) << day3 << endl;
     cout << "Total: " << setw(8) << total << endl;
 
-    system("pause");
+    //system("pause");
     return 0;
 }
