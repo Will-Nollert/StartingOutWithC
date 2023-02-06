@@ -1,3 +1,28 @@
+
+//____________________________Sudo Code___________________________________________
+
+//headers, iostream, string, fstream
+//using namespace std
+
+//use ifstream to declare local var name for file after import 
+//use STRING to delcare the users input for name of the file 
+//Use STRING to decalre a big string that will hold all the names of students in class
+
+//get the filename from the user
+
+//check if file exsists 
+    //if inputFile
+        //while(inputFile >> number){ read names into local var name strings }
+    //close the file
+    //else 
+        //display error 
+
+//end the program 
+
+
+
+//__________________________File Reading Notes_____________________________________
+
 //Use fstream header for files access 
 //File Stream types:
     //ifstream for input from a file 
@@ -29,3 +54,5 @@
     //use the close member function     
     // infile.close()
     //outfile.close()
+
+

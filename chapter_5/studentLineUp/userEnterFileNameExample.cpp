@@ -6,7 +6,7 @@ using namespace std;
 int main (){
     ifstream inputFile;
     string filename;
-    int number;
+    int number 10;
 
     //get the filename form the user 
     cout << "Enter the filename: ";
