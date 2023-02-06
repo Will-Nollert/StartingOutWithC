@@ -9,7 +9,7 @@ int main()
     const double PACKAGE_A = 39.99;
     const double PACKAGE_B = 59.99;
     const double PACKAGE_C = 69.99;
-    double gigsUsed, billTotal, packageNamePrice, extraDataCharge;
+    double gigsUsed, gigsCharged, billTotal, packageNamePrice, extraDataCharge;
 
     // declare Strings 
     string username, packageName, selectedMonth;
@@ -32,51 +32,51 @@ int main()
         return 0;
     }
     // parsing
-    else if (month = 1)
+    else if (month == 1)
     {
         selectedMonth = "Januray";
     }
-    else if (month = 2)
+    else if (month == 2)
     {
         selectedMonth = "February";
     }
-    else if (month = 3)
+    else if (month == 3)
     {
         selectedMonth = "March";
     }
-    else if (month = 4)
+    else if (month == 4)
     {
         selectedMonth = "April";
     }
-    else if (month = 5)
+    else if (month == 5)
     {
         selectedMonth = "May";
     }
-    else if (month = 6)
+    else if (month == 6)
     {
         selectedMonth = "June";
     }
-    else if (month = 7)
+    else if (month == 7)
     {
         selectedMonth = "July";
     }
-    else if (month = 8)
+    else if (month == 8)
     {
         selectedMonth = "August";
     }
-    else if (month = 9)
+    else if (month == 9)
     {
         selectedMonth = "September";
     }
-    else if (month = 10)
+    else if (month == 10)
     {
         selectedMonth = "October";
     }
-    else if (month = 11)
+    else if (month == 11)
     {
         selectedMonth = "November";
     }
-    else if (month = 12)
+    else if (month == 12)
     {
         selectedMonth = "December";
     }
@@ -99,28 +99,28 @@ int main()
         return 0;
     }
     // parsing
-    else if (userProgramMenuSelection = 1)
+    else if (userProgramMenuSelection == 1)
     {
         packageName = "Package A";
         packageNamePrice = PACKAGE_A;
         dataRate = 10;
 
     }
-    else if (userProgramMenuSelection = 2)
+    else if (userProgramMenuSelection == 2)
     {
         packageName = "Package B";
         packageNamePrice = PACKAGE_B;
         dataRate = 5;
 
     }
-    else if (userProgramMenuSelection = 3)
+    else if (userProgramMenuSelection == 3)
     {
         packageName = "Package C";
         packageNamePrice = PACKAGE_C;
         dataRate = 0;
 
     }
-    else if (userProgramMenuSelection = 4)
+    else if (userProgramMenuSelection == 4)
     {
         cout << "GoodBye";
         return 0;
@@ -131,8 +131,21 @@ int main()
     cout << "How many gigs did you use this month? \n ";
     cin >> gigsUsed;
 
+    //if PaKname is A Extra chare = (gigsued)
+    if(packageName == "Package C"){
+        gigsCharged = gigsUsed;
+    } else if ( packageName == "Package B"){
+        gigsCharged = gigsUsed - 8;
+    } else if (packageName == "Package A"){
+        gigsCharged = gigsUsed - 4;
+    } 
+    //prevents negative charge for data use 
+    if(gigsCharged < 0 ){
+        gigsCharged = 0;
+    }
+
     // compute bill Total
-    extraDataCharge = gigsUsed * dataRate; 
+    extraDataCharge = gigsCharged * dataRate; 
     billTotal = packageNamePrice + extraDataCharge; 
 
     // display Bill with Month of Bill, Name, Package code
@@ -143,8 +156,11 @@ int main()
          << "For the month of " << selectedMonth << endl;
     cout << "This Month you selected " << packageName << " and used " << gigsUsed << " gigs of data "
          << "for a total bill of: $" << billTotal << endl << endl;
-    cout << "Bill BreakDown" << endl;
-    cout << "--------------\n";
-    cout << "Package Cost: " << setw(8) << packageNamePrice << endl;
-    cout << "Addtional Data: " << setw(6) << extraDataCharge << endl;
+
+    cout << selectedMonth << " Bill Breakdown" << endl;
+    cout << "-----------------------\n";
+    cout << "Username: " << setw(1) << username << endl;
+    cout <<"Package Name: " << setw(1) << packageName << endl;
+    cout << "Package Cost: " << setw(10) << packageNamePrice << endl;
+    cout << "Addtional Data: " << setw(8) << extraDataCharge << endl;
 }
