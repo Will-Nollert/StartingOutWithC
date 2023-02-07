@@ -21,7 +21,6 @@ int numberOfStudents;
 cout << "How many students total?";
 cin >> numberOfStudents;
 
-//enter number of studnets in class
 
 //get the filename from the user
 cout << "Enter the filename: ";
@@ -36,26 +35,45 @@ if(!inputFile){
     return 0;
 } 
 
-string stringOfAllStudentNames; 
+string stringOfAllStudentNames, first, last;  
 
-string first;
-string last;
 
-inputFile >> singleStudentName; //Assignes
+inputFile >> singleStudentName; 
 first = singleStudentName;
 last = singleStudentName;
+int index = 1;
 
 //get each students name
 for (int i = 0; i < numberOfStudents; i++){
     //Read single name from the file executes 1x per loop
     inputFile >> singleStudentName; //Assignes
+    
+
     if(first[0] > singleStudentName[0]){
         first = singleStudentName;
-    } 
+    }  
+
+    if(first[0] == singleStudentName[0]){
+        while(first[index] == singleStudentName[index]){
+            index++;
+        } 
+        if(first[index] > singleStudentName[index]){
+            first = singleStudentName;
+        }
+    }
 
 
     if(last[0] < singleStudentName[0]){
     last = singleStudentName;
+    }
+
+    if(last[0] == singleStudentName[0]){
+        while(last[index] == singleStudentName[index]){
+            index++;
+        } 
+        if(last[index] > singleStudentName[index]){
+            last = singleStudentName; 
+        }
     }
 
 
