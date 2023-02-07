@@ -30,7 +30,6 @@ cin >> importFile;
 //open the file 
 inputFile.open(importFile);
 
-
 //check that the user input an exsisitng file if not restart program flow 
 if(!inputFile){
     cout << "Please start the program again and enter the name of valid file.";
@@ -39,18 +38,44 @@ if(!inputFile){
 
 string stringOfAllStudentNames; 
 
+string first;
+string last;
+
+inputFile >> singleStudentName; //Assignes
+first = singleStudentName;
+last = singleStudentName;
+
 //get each students name
 for (int i = 0; i < numberOfStudents; i++){
     //Read single name from the file executes 1x per loop
-    inputFile >> singleStudentName; //Assignes current 
-    stringOfAllStudentNames += singleStudentName + " ";    
+    inputFile >> singleStudentName; //Assignes
+    if(first[0] > singleStudentName[0]){
+        first = singleStudentName;
+    } 
+
+
+    if(last[0] < singleStudentName[0]){
+    last = singleStudentName;
+    }
+
+
+     
+    //stringOfAllStudentNames += singleStudentName + " ";    
 }
 
+    cout << last;
+    cout << first; 
 
-cout << stringOfAllStudentNames;
-cout << stringOfAllStudentNames.length();
 
 
+//cout << stringOfAllStudentNames;
+//cout << stringOfAllStudentNames.length();
+
+for(int i = 0; i < stringOfAllStudentNames.length(); i++){
+if(stringOfAllStudentNames == " "){
+
+}
+}
 
 
 //close file 
