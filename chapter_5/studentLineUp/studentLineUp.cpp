@@ -8,10 +8,10 @@ int main(){
 //use ifstream to declare local var name for file after import 
 ifstream inputFile;
 //use STRING to delcare the users input for name of the file, and output
-string importFile, firstStudentInLine = "ZZZ", lastStudentInLine;
-//Use STRING to decalre a big string that will hold all the names of students in class
-string singleStudentName, tempString;
-int numberOfStudents; 
+string importFile, singleStudentName, first, last;  
+//use int for number of students and idx for algo 
+int numberOfStudents, index = 1;
+ 
 
 //ask for total studnts 
 cout << "How many students total? ";
@@ -31,8 +31,6 @@ if(!inputFile){
     return 0;
 } 
 
-string stringOfAllStudentNames, first, last;  
-
 //set markers for later comparison 
 //not exactly a pivot i think but important to use a value we 
 //know is going to be in the dataset so that  way the values can move realtive to that pivot 
@@ -43,7 +41,6 @@ inputFile >> singleStudentName;
 first = singleStudentName;
 last =  singleStudentName;
 //index for more than just first didget comparison
-int index = 1;
 
 
 
