@@ -1,14 +1,27 @@
-
-//____________________________Sudo Code___________________________________________
+//__________________Program__________________________
 
 //headers, iostream, string, fstream
 //using namespace std
+#include <iostream>
+#include <string>
+#include <fstream>
+using namespace std;
+
+int main(){
 
 //use ifstream to declare local var name for file after import 
-//use STRING to delcare the users input for name of the file 
+ifstream inputFile;
+//use STRING to delcare the users input for name of the file, and output
+string studnetListImportFile, firstStudentInLine, lastStudentInLine;
 //Use STRING to decalre a big string that will hold all the names of students in class
+string studentListFileText;
 
 //get the filename from the user
+cout << "Enter the filename: ";
+cin >> studnetListImportFile;
+
+//open the file 
+inputFile.open(studnetListImportFile);
 
 //check if file exsists 
     //if inputFile
@@ -18,6 +31,10 @@
         //display error 
 
 //end the program 
+
+
+
+}
 
 
 
