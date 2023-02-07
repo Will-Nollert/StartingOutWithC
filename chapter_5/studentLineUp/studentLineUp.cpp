@@ -12,31 +12,32 @@ int main(){
 //use ifstream to declare local var name for file after import 
 ifstream inputFile;
 //use STRING to delcare the users input for name of the file, and output
-string studnetListImportFile, firstStudentInLine, lastStudentInLine;
+string importFile, firstStudentInLine, lastStudentInLine;
 //Use STRING to decalre a big string that will hold all the names of students in class
-string studentListFileText;
+string singleStudentName;
 
 //get the filename from the user
 cout << "Enter the filename: ";
-cin >> studnetListImportFile;
+cin >> importFile;
 
 //open the file 
-inputFile.open(studnetListImportFile);
+inputFile.open(importFile);
 
-//check if file exsists 
-    //if inputFile
-        //while(inputFile >> number){ read names into local var name strings }
-    //close the file
-    //else 
-        //display error 
+//check that the user input an exsisitng file if not restart program flow 
+if(!inputFile){
+    cout << "Please start the program again and enter the name of valid file.";
+    return 0;
+} 
 
-//end the program 
-
-
-
+for (int count = 1; count <= 31; count++){
+    inputFile >> singleStudentName; //Read the next name from the file
+    cout << singleStudentName << endl;   
 }
 
+inputFile.close();
+return 0;
 
+}
 
 //__________________________File Reading Notes_____________________________________
 
