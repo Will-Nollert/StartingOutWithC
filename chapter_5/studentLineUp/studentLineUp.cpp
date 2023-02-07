@@ -12,9 +12,16 @@ int main(){
 //use ifstream to declare local var name for file after import 
 ifstream inputFile;
 //use STRING to delcare the users input for name of the file, and output
-string importFile, firstStudentInLine, lastStudentInLine;
+string importFile, firstStudentInLine = "ZZZ", lastStudentInLine;
 //Use STRING to decalre a big string that will hold all the names of students in class
-string singleStudentName;
+string singleStudentName, tempString;
+int numberOfStudents; 
+
+//ask for total studnts 
+cout << "How many students total?";
+cin >> numberOfStudents;
+
+//enter number of studnets in class
 
 //get the filename from the user
 cout << "Enter the filename: ";
@@ -23,18 +30,32 @@ cin >> importFile;
 //open the file 
 inputFile.open(importFile);
 
+
 //check that the user input an exsisitng file if not restart program flow 
 if(!inputFile){
     cout << "Please start the program again and enter the name of valid file.";
     return 0;
 } 
 
-for (int count = 1; count <= 31; count++){
-    inputFile >> singleStudentName; //Read the next name from the file
-    cout << singleStudentName << endl;   
+string stringOfAllStudentNames; 
+
+//get each students name
+for (int i = 0; i < numberOfStudents; i++){
+    //Read single name from the file executes 1x per loop
+    inputFile >> singleStudentName; //Assignes current 
+    stringOfAllStudentNames += singleStudentName + " ";    
 }
 
+
+cout << stringOfAllStudentNames;
+cout << stringOfAllStudentNames.length();
+
+
+
+
+//close file 
 inputFile.close();
+//end progrma 
 return 0;
 
 }
