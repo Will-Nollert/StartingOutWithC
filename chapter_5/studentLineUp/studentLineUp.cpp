@@ -18,7 +18,7 @@ string singleStudentName, tempString;
 int numberOfStudents; 
 
 //ask for total studnts 
-cout << "How many students total?";
+cout << "How many students total? ";
 cin >> numberOfStudents;
 
 
@@ -38,31 +38,35 @@ if(!inputFile){
 string stringOfAllStudentNames, first, last;  
 
 
-inputFile >> singleStudentName; 
+inputFile >> singleStudentName;
+//set markers equal to name present on the list to stort from. sort of a pivot maybe 
 first = singleStudentName;
-last = singleStudentName;
+last =  singleStudentName;
+//index for more than just first didget comparison
 int index = 1;
 
-//get each students name
-for (int i = 0; i < numberOfStudents; i++){
-    //Read single name from the file executes 1x per loop
-    inputFile >> singleStudentName; //Assignes
-    
 
+
+for (int i = 0; i < numberOfStudents; i++){
+    inputFile >> singleStudentName; //Assinges the comparison value name to singleStuent name 
+
+    //sort by first char of name 
     if(first[0] > singleStudentName[0]){
         first = singleStudentName;
     }  
-
+    //if names start with same first char go to the next non equal and compare 
     if(first[0] == singleStudentName[0]){
         while(first[index] == singleStudentName[index]){
+            //move the char of comparison one value to the right 
             index++;
         } 
+        //and sort by char weight again 
         if(first[index] > singleStudentName[index]){
             first = singleStudentName;
         }
     }
 
-
+    //repeate same sorting algo but reverse the comparison opperator for last instead of first 
     if(last[0] < singleStudentName[0]){
     last = singleStudentName;
     }
@@ -76,24 +80,15 @@ for (int i = 0; i < numberOfStudents; i++){
         }
     }
 
-
-     
-    //stringOfAllStudentNames += singleStudentName + " ";    
 }
 
-    cout << last;
-    cout << first; 
 
-
-
-//cout << stringOfAllStudentNames;
-//cout << stringOfAllStudentNames.length();
-
-for(int i = 0; i < stringOfAllStudentNames.length(); i++){
-if(stringOfAllStudentNames == " "){
-
-}
-}
+cout << endl;
+cout << "Student Order" << endl;
+cout << "---------------------------------\n";
+cout << "This last student in line is: " << last << endl;
+cout << "The first student in line is: "<< first << endl; 
+cout << endl; 
 
 
 //close file 
@@ -102,39 +97,4 @@ inputFile.close();
 return 0;
 
 }
-
-//__________________________File Reading Notes_____________________________________
-
-//Use fstream header for files access 
-//File Stream types:
-    //ifstream for input from a file 
-    //ofstream for output to a file
-    //fstream for input or output for a file 
-
-//Deine file objects 
-    //ifstream infile;
-    //ofstream outfile; 
-
-//Opening Files 
-    //infile.open("example.txt")
-    //outfile.opne("example.txt")
-        //testing 
-
-        //infile.open("exaple.txt");
-        //  if(!infile){ cout << 'File open failed'}
-        //can also use fail member function 
-
-//Using Files 
-    //Can use inout files objects and >> to copy data from files to vars   
-        //infile >> partNum 
-
-//Using loops to process files 
-    //The stream extraction opperatotr >> returns True with data and false otherwise. 
-    //Can be tested in  while loop while( inputFile >> number)
-    
-//Closing Files 
-    //use the close member function     
-    // infile.close()
-    //outfile.close()
-
 
