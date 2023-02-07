@@ -1,7 +1,3 @@
-//__________________Program__________________________
-
-//headers, iostream, string, fstream
-//using namespace std
 #include <iostream>
 #include <string>
 #include <fstream>
@@ -37,9 +33,13 @@ if(!inputFile){
 
 string stringOfAllStudentNames, first, last;  
 
-
+//set markers for later comparison 
+//not exactly a pivot i think but important to use a value we 
+//know is going to be in the dataset so that  way the values can move realtive to that pivot 
+    //i.e if last was 'ZZZZZZZZ' noting would pivot realtive to that because noting is weighed more 
+    //or AAAAA for first, same logic not to use "test" or "first " bc the first names of a given set
+    //may only be in the range [a-c] and test is not in that range so no pivot
 inputFile >> singleStudentName;
-//set markers equal to name present on the list to stort from. sort of a pivot maybe 
 first = singleStudentName;
 last =  singleStudentName;
 //index for more than just first didget comparison
