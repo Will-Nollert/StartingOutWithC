@@ -1,7 +1,3 @@
-//__________________Program__________________________
-
-//headers, iostream, string, fstream
-//using namespace std
 #include <iostream>
 #include <string>
 #include <fstream>
@@ -12,9 +8,15 @@ int main(){
 //use ifstream to declare local var name for file after import 
 ifstream inputFile;
 //use STRING to delcare the users input for name of the file, and output
-string importFile, firstStudentInLine, lastStudentInLine;
-//Use STRING to decalre a big string that will hold all the names of students in class
-string singleStudentName;
+string importFile, singleStudentName, first, last;  
+//use int for number of students and idx for algo 
+int numberOfStudents, index = 1;
+ 
+
+//ask for total studnts 
+cout << "How many students total? ";
+cin >> numberOfStudents;
+
 
 //get the filename from the user
 cout << "Enter the filename: ";
@@ -29,48 +31,67 @@ if(!inputFile){
     return 0;
 } 
 
-for (int count = 1; count <= 31; count++){
-    inputFile >> singleStudentName; //Read the next name from the file
-    cout << singleStudentName << endl;   
+//set markers for later comparison 
+//not exactly a pivot i think but important to use a value we 
+//know is going to be in the dataset so that  way the values can move realtive to that pivot 
+    //i.e if last was 'ZZZZZZZZ' noting would pivot realtive to that because noting is weighed more 
+    //or AAAAA for first, same logic not to use "test" or "first " bc the first names of a given set
+    //may only be in the range [a-c] and test is not in that range so no pivot
+inputFile >> singleStudentName;
+first = singleStudentName;
+last =  singleStudentName;
+//index for more than just first didget comparison
+
+
+
+for (int i = 0; i < numberOfStudents; i++){
+    inputFile >> singleStudentName; //Assinges the comparison value name to singleStuent name 
+
+    //sort by first char of name 
+    if(first[0] > singleStudentName[0]){
+        first = singleStudentName;
+    }  
+    //if names start with same first char go to the next non equal and compare 
+    if(first[0] == singleStudentName[0]){
+        while(first[index] == singleStudentName[index]){
+            //move the char of comparison one value to the right 
+            index++;
+        } 
+        //and sort by char weight again 
+        if(first[index] > singleStudentName[index]){
+            first = singleStudentName;
+        }
+    }
+
+    //repeate same sorting algo but reverse the comparison opperator for last instead of first 
+    if(last[0] < singleStudentName[0]){
+    last = singleStudentName;
+    }
+
+    if(last[0] == singleStudentName[0]){
+        while(last[index] == singleStudentName[index]){
+            index++;
+        } 
+        if(last[index] > singleStudentName[index]){
+            last = singleStudentName; 
+        }
+    }
+
 }
 
+
+cout << endl;
+cout << "Student Order" << endl;
+cout << "---------------------------------\n";
+cout << "This last student in line is: " << last << endl;
+cout << "The first student in line is: "<< first << endl; 
+cout << endl; 
+
+
+//close file 
 inputFile.close();
+//end progrma 
 return 0;
 
 }
-
-//__________________________File Reading Notes_____________________________________
-
-//Use fstream header for files access 
-//File Stream types:
-    //ifstream for input from a file 
-    //ofstream for output to a file
-    //fstream for input or output for a file 
-
-//Deine file objects 
-    //ifstream infile;
-    //ofstream outfile; 
-
-//Opening Files 
-    //infile.open("example.txt")
-    //outfile.opne("example.txt")
-        //testing 
-
-        //infile.open("exaple.txt");
-        //  if(!infile){ cout << 'File open failed'}
-        //can also use fail member function 
-
-//Using Files 
-    //Can use inout files objects and >> to copy data from files to vars   
-        //infile >> partNum 
-
-//Using loops to process files 
-    //The stream extraction opperatotr >> returns True with data and false otherwise. 
-    //Can be tested in  while loop while( inputFile >> number)
-    
-//Closing Files 
-    //use the close member function     
-    // infile.close()
-    //outfile.close()
-
 
