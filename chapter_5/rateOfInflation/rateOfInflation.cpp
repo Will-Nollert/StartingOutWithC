@@ -37,14 +37,15 @@ int main (){
         rateOfInflation = (1/((userInput/100) + 1));
 
     cout << "Inflation table for 1000 2023 Dollars" << endl;
-    cout << "----------------------------------" << endl;
+    cout << "-------------------------------------" << endl;
     //use 4 loop for 10 yearly itterations of the inflation cycle
     for (int i = 0; i < 10; i++){
         //take  yearlyTotal and multiply by rate of inflation set equalt to adjusted rate 
         adjustedYearlyTotal = yearlyTotal * rateOfInflation;
         currentYear++;
+            //TODO-- need a setPrecesion if clause
         //cout adujusteed rate 
-        cout << "The inflation adjusted buying power for " << currentYear <<" is: " << adjustedYearlyTotal <<setprecision(5) <<  endl;
+        cout << "The inflation adjusted buying power for " << currentYear <<" is: " << setprecision(5) << showpoint << "$"<< adjustedYearlyTotal <<  endl;
         //set yeaaly total equal to adjuset rate 
         yearlyTotal = adjustedYearlyTotal;
     }
