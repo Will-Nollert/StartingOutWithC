@@ -47,7 +47,17 @@ last =  singleStudentName;
 for (int i = 0; i < numberOfStudents; i++){
     inputFile >> singleStudentName; //Assinges the comparison value name to singleStuent name 
 
-    //sort by first char of name 
+    //After thinking about it even more I realized you dont kneed to check every char 
+    //you can just compare the whole vars weight vs each other. 
+    
+    if(first > singleStudentName){
+        first = singleStudentName;
+    }
+
+    if(last < singleStudentName){
+        last =singleStudentName;
+    }
+   /*/ //sort by first char of name 
     if(first[0] > singleStudentName[0]){
         first = singleStudentName;
     }  
@@ -75,8 +85,9 @@ for (int i = 0; i < numberOfStudents; i++){
         if(last[index] > singleStudentName[index]){
             last = singleStudentName; 
         }
+        
     }
-
+*/
 }
 
 
