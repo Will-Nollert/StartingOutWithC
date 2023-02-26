@@ -10,30 +10,43 @@
 #include <fstream>
 #include <string>
 using namespace std;
-int main(){
-    //open the fiel
-    ifstream inputFile("Teams.txt");
 
-    //check if the file is open 
-    if(!inputFile.is_open()){
-        cout << "Teams.txt could not be opened \n";
-        return 1;
+// Function to read and display the contents of the file
+void displayTeamsFromFile(string filename) {
+    // Open the file
+    ifstream inputFile(filename);
+
+    // Check if the file was successfully opened
+    if (!inputFile.is_open()) {
+        cout << "Error opening file." << endl;
+        return;
     }
 
-    //read the file and display the teams 
+    // Read and display the contents of the file
     string team;
-    cout << "Teams: " << endl;
-    while(getline(inputFile, team)){
+    cout << "The teams are:" << endl;
+    while (getline(inputFile, team)) {
         cout << team << endl;
     }
 
-    //ask for selection 
-    string userInput;
-    cout << "Enter the name of one of the teams. \n";
-    cin >> userInput;
-
-    //close the file
+    // Close the file
     inputFile.close();
+}
+
+
+
+
+
+
+
+int main(){
+  // Call the displayTeamsFromFile function with the filename
+    displayTeamsFromFile("Teams.txt");
+
+    // Prompt the user to enter the name of a team
+    string userTeam;
+    cout << "Enter the name of a team: ";
+    cin >> userTeam;
 
     return 0;
 }
