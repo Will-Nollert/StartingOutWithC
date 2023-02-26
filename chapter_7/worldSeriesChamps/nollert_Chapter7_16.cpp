@@ -11,6 +11,9 @@
 #include <string>
 using namespace std;
 
+const int MAX_TEAMS = 30;
+
+
 // Function to read and display the contents of the file
 void displayTeamsFromFile(string filename) {
     // Open the file
@@ -33,20 +36,44 @@ void displayTeamsFromFile(string filename) {
     inputFile.close();
 }
 
+//ReadTeams Function 
+string* readDataToArray(string fileName, int& numTeams) {
+    string* teams = new string[MAX_TEAMS];
+    ifstream inFile(fileName);
 
+    if (!inFile) {
+        cout << "Unable to open file " << fileName << endl;
+        exit(1);
+    }
 
+    numTeams = 0;
+    string teamName;
 
+    while (getline(inFile, teamName) && numTeams < MAX_TEAMS) {
+        teams[numTeams] = teamName;
+        numTeams++;
+    }
+
+    inFile.close();
+
+    return teams;
+}
 
 
 
 int main(){
-  // Call the displayTeamsFromFile function with the filename
+
     displayTeamsFromFile("Teams.txt");
 
-    // Prompt the user to enter the name of a team
-    string userTeam;
-    cout << "Enter the name of a team: ";
-    cin >> userTeam;
+    int numTeams;
+    readDataToArray("WorldSeriesWinners.txt", numTeams);
+
+    //ask for selection 
+    string userInput;
+    cout << "Enter the name of one of the teams. \n";
+    cin >> userInput;
+
+ 
 
     return 0;
 }
