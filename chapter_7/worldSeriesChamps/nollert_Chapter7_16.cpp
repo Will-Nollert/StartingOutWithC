@@ -59,7 +59,18 @@ string* readDataToArray(string fileName, int& numTeams) {
     return teams;
 }
 
-
+int winnerCount(const string& teamName) {
+    ifstream inputFile("WorldSeriesWinners.txt");
+    string winner;
+    int count = 0;
+    while (inputFile >> winner) {
+        if (winner == teamName) {
+            count++;
+        }
+    }
+    inputFile.close();
+    return count;
+}
 
 int main(){
 
@@ -69,9 +80,11 @@ int main(){
     readDataToArray("WorldSeriesWinners.txt", numTeams);
 
     //ask for selection 
-    string userInput;
+    string teamName;
     cout << "Enter the name of one of the teams. \n";
-    cin >> userInput;
+    cin >> teamName;
+    int count = winnerCount(teamName);
+    cout <<"The " << teamName << " has won the World Series " << count << " times. \n";
 
  
 
